@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Target vs CurrentTarget Demo</title>
+  <style>
+    body { font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; padding: 40px; }
+    .outer {
+      background: #f0f4ff;
+      padding: 40px;
+      border: 2px dashed #3c0c75;
+      position: relative;
+    }
+    .inner {
+      background: #fff;
+      padding: 30px;
+      border: 2px solid #ff4c3b;
+      margin: 20px;
+      cursor: pointer;
+    }
+    .log {
+      margin-top: 30px;
+      padding: 16px;
+      background: #222;
+      color: #f5f5f5;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+    }
+    button { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Event Target vs currentTarget</h1>
+  <p>Click inside the inner box or on the outer area; observer the difference in the log.</p>
+
+  <div class="outer" id="outer">
+    Outer container (listener attached here)
+    <div class="inner" id="inner">
+      Inner box (click me)
+    </div>
+  </div>
+
+  <div class="log" id="log">Log will appear here...</div>
+  <button id="clear">Clear Log</button>
+
+  <script>
+    const outer = document.getElementById('outer');
+    const inner = document.getElementById('inner');
+    const logEl = document.getElementById('log');
+    const clearBtn = document.getElementById('clear');
+
+    function appendLog(text) {
+      logEl.textContent += text + '\\n';
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    outer.addEventListener('click', (e) => {
+      appendLog('--- Outer listener fired ---');
+      appendLog('e.target: ' + e.target.id + ' (the actual clicked element)');
+      appendLog('e.currentTarget: ' + e.currentTarget.id + ' (where handler is attached)');
+    });
+
+    inner.addEventListener('click', (e) => {
+      appendLog('--- Inner listener fired ---');
+      appendLog('e.target: ' + e.target.id);
+      appendLog('e.currentTarget: ' + e.currentTarget.id);
+      // stop propagation if you want to see only inner:
+      // e.stopPropagation();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      logEl.textContent = '';
+    });
+  </script>
+</body>
+</html>

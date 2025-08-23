@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - NovaTech Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* :root {
+            --primary: #2d6cdf;
+            --secondary: #f0f4f8;
+            --accent: #f7b32b;
+            --text: #2c3e50;
+            --bg: #f7f7f7;
+        } */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--text);
+        }
+        header {
+            background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
+            color: #fff;
+            padding: 32px 0 24px 0;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+        }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+        }
+        .logo-icon svg {
+            width: 32px;
+            height: 32px;
+            display: block;
+        }
+        .company-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .about-heading {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #eaf1fb;
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        section {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 32px;
+            padding: 28px 32px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.04);
+            transition: box-shadow 0.2s;
+        }
+        section:hover {
+            box-shadow: 0 6px 24px rgba(44,62,80,0.10);
+        }
+        section h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.4rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+        }
+        .team-list {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .team-member {
+            flex: 1 1 220px;
+            background: var(--secondary);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 0;
+            box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+            text-align: center;
+            transition: transform 0.15s;
+        }
+        .team-member:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 4px 16px rgba(44,62,80,0.10);
+        }
+        .team-member strong {
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        footer {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 18px 10px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-top: 40px;
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: text-decoration 0.2s;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 700px) {
+            main {
+                padding: 10px;
+            }
+            section {
+                padding: 18px 10px;
+            }
+            .team-list {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .company-name {
+                font-size: 1.3rem;
+            }
+            .about-heading {
+                font-size: 1.1rem;
+            }
+            header {
+                padding: 20px 0 14px 0;
+            }
+            footer {
+                font-size: 0.95rem;
+                padding: 12px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-icon">
+                <!-- Simple SVG logo: stylized N in a circle -->
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="20" fill="#2d6cdf"/>
+                    <path d="M12 28V12h4l8 16h-4l-8-16z" fill="#f7b32b"/>
+                </svg>
+            </span>
+            <span class="company-name">NovaTech Solutions</span>
+        </div>
+        <h1 class="about-heading">About Us</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Our History</h2>
+            <p>
+                Founded in 2010, NovaTech Solutions began as a small startup with a vision to revolutionize the tech industry. Over the past decade, we have grown into a leading provider of innovative solutions, serving clients worldwide.
+            </p>
+        </section>
+        <section>
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to empower businesses and individuals through cutting-edge technology and exceptional service. We strive to create products that make a positive impact and drive progress in our communities.
+            </p>
+        </section>
+        <section>
+            <h2>Our Team</h2>
+            <ul class="team-list">
+                <li class="team-member">
+                    <strong>Alex Smith</strong><br>
+                    CEO &amp; Founder
+                </li>
+                <li class="team-member">
+                    <strong>Jamie Lee</strong><br>
+                    Chief Technology Officer
+                </li>
+                <li class="team-member">
+                    <strong>Riley Chen</strong><br>
+                    Head of Marketing
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        &copy; 2024 NovaTech Solutions. All rights reserved. |
+        <a href="mailto:info@novatech.com">Contact Us</a>
+    </footer>
+</body>
+</html>

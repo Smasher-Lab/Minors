@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Propagation & Delegation Demo</title>
+  <style>
+    body { font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; padding: 30px; background: #f5f7fa; }
+    h1 { margin-bottom: 6px; }
+    p { margin-top: 0; }
+    .box {
+      margin: 20px 0;
+      padding: 20px;
+      border: 2px dashed #3c0c75;
+      border-radius: 8px;
+      position: relative;
+    }
+    .inner {
+      background: #fff;
+      padding: 18px;
+      border: 2px solid #ff4c3b;
+      margin: 15px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .section {
+      background: #fff;
+      padding: 18px 24px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(60,60,120,0.08);
+      margin-bottom: 40px;
+    }
+    .log {
+      margin-top: 15px;
+      padding: 14px;
+      background: #1f1f2e;
+      color: #f0f0ff;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    button, .btn {
+      cursor: pointer;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    .controls { margin-bottom: 10px; }
+    .delegation-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .delegation-list .item {
+      background: #e3e8ff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .highlight {
+      background: rgba(255, 220, 0, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>1. Propagation & StopPropagation</h1>
+    <p>Click the inner box or outer container. Toggle "Stop Propagation" to see how it affects event bubbling.</p>
+    <div class="controls">
+      <label>
+        <input type="checkbox" id="toggleStop" />
+        <strong>Enable stopPropagation on inner box</strong>
+      </label>
+      <button id="clearLog1">Clear Log</button>
+    </div>
+    <div class="box" id="outer">
+      Outer container (listener attached here)
+      <div class="inner" id="inner">
+        Inner box (click me)
+      </div>
+    </div>
+    <div class="log" id="log1">Logs for propagation will appear here...</div>
+  </div>
+
+  <div class="section">
+    <h1>2. Event Delegation</h1>
+    <p>Instead of attaching listeners to each button, a single listener on the container watches for clicks. New items can be added dynamically.</p>
+    <div class="controls">
+      <button id="addItem">Add New Item</button>
+      <button id="clearLog2">Clear Log</button>
+    </div>
+    <div class="box" id="delegationContainer">
+      <div class="delegation-list" id="list">
+        <div class="item" data-id="1">Item 1</div>
+        <div class="item" data-id="2">Item 2</div>
+      </div>
+    </div>
+    <div class="log" id="log2">Logs for delegation will appear here...</div>
+  </div>
+
+  <script>
+    // ----- Part 1: Propagation and stopPropagation -----
+    const outer = document.getElementById('outer');
+    const inner = document.getElementById('inner');
+    const log1 = document.getElementById('log1');
+    const toggleStop = document.getElementById('toggleStop');
+    const clearLog1 = document.getElementById('clearLog1');
+
+    function appendLog1(text) {
+      log1.textContent += text + '\\n';
+      log1.scrollTop = log1.scrollHeight;
+    }
+
+    outer.addEventListener('click', (e) => {
+      appendLog1('*** Outer listener fired ***');
+      appendLog1('e.target: ' + e.target.id + ' | e.currentTarget: ' + e.currentTarget.id);
+    });
+
+    inner.addEventListener('click', (e) => {
+      appendLog1('*** Inner listener fired ***');
+      appendLog1('e.target: ' + e.target.id + ' | e.currentTarget: ' + e.currentTarget.id);
+      if (toggleStop.checked) {
+        appendLog1('stopPropagation() called on inner');
+        e.stopPropagation(); // prevents bubbling to outer
+      }
+    });
+
+    clearLog1.addEventListener('click', () => { log1.textContent = ''; });
+
+    // ----- Part 2: Event Delegation -----
+    const delegationContainer = document.getElementById('delegationContainer');
+    const list = document.getElementById('list');
+    const log2 = document.getElementById('log2');
+    const addItem = document.getElementById('addItem');
+    const clearLog2 = document.getElementById('clearLog2');
+    let nextId = 3;
+
+    function appendLog2(text) {
+      log2.textContent += text + '\\n';
+      log2.scrollTop = log2.scrollHeight;
+    }
+
+    // Delegated click listener on parent
+    list.addEventListener('click', (e) => {
+      const item = e.target.closest('.item');
+      if (!item) return; // ignore clicks outside items
+      appendLog2('Clicked delegated item with data-id=' + item.dataset.id);
+      appendLog2('e.target: ' + e.target.className + ' | e.currentTarget: ' + e.currentTarget.id);
+      // example action: highlight briefly
+      item.style.transition = 'background 0.3s';
+      item.style.background = '#ffd';
+      setTimeout(() => {
+        item.style.background = '';
+      }, 300);
+    });
+
+    addItem.addEventListener('click', () => {
+      const newItem = document.createElement('div');
+      newItem.className = 'item';
+      newItem.dataset.id = nextId++;
+      newItem.textContent = 'Item ' + newItem.dataset.id;
+      list.appendChild(newItem);
+      appendLog2('Added new item with data-id=' + newItem.dataset.id);
+    });
+
+    clearLog2.addEventListener('click', () => { log2.textContent = ''; });
+  </script>
+</body>
+</html>

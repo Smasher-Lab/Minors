@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Grid Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gallery</h1>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1015/400/300" alt="Gallery Image 1">
+                <div class="caption">Mountain View</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1025/400/300" alt="Gallery Image 2">
+                <div class="caption">Dog Portrait</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1035/400/300" alt="Gallery Image 3">
+                <div class="caption">River Scene</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1045/400/300" alt="Gallery Image 4">
+                <div class="caption">Forest Path</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1055/400/300" alt="Gallery Image 5">
+                <div class="caption">City Lights</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1065/400/300" alt="Gallery Image 6">
+                <div class="caption">Desert Dunes</div>
+            </div>
+        </div>
+    </div>
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img id="lightboxImg" src="" alt="Large View">
+    </div>
+    <script>
+        // Lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        galleryItems.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src.replace('/400/300', '/900/700');
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            }
+        });
+    </script>
+</body>
+</html>

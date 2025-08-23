@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple ToDo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Simple ToDo List</h1>
+    </header>
+    <div class="todocontainer">
+        <input type="text" id="taskInput" placeholder="Enter a new task">
+        <button id="addTaskButton">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script >
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+    
+        document.getElementById('addTaskButton').addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+    
+        function addTask() {
+            const taskInputValue = taskInput.value.trim();
+            if (taskInputValue === '') {
+                alert('Please enter a task');
+                return;
+            } else {
+                const li = document.createElement('li');
+                li.textContent = taskInputValue;
+                const deleteButton = document.createElement('button');
+                const completedButton = document.createElement('button');
+                deleteButton.textContent = 'Remove';
+                deleteButton.className = 'delete-button';
+                completedButton.className = 'completed-button';
+                completedButton.textContent = 'Completed';
+                deleteButton.addEventListener('click', () => {
+                    taskList.removeChild(li);
+                });
+                completedButton.addEventListener('click', () => {
+                    li.style.textDecoration = 'line-through';
+                });
+                li.appendChild(deleteButton);
+                li.appendChild(completedButton);
+                taskList.appendChild(li);
+                taskInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>

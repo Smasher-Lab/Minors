@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="logo">DataFlow</div>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <ul class="nav-links">
+      <li class="dropdown">
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">
+          Product ▾
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#integration">Integration</a></li>
+          <li><a href="#docs">Docs</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">
+          Company ▾
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#login" class="nav-link login">Login</a>
+      <a href="#signup" class="btn btn-primary signup">Sign Up</a>
+    </div>
+  </nav>
+</header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div>
+        <h1>Transform Your Data Into Actionable Insights</h1>
+        <p class="hero-description">
+          Powerful analytics tools to help you make data-driven decisions with ease.
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary">Start Free Trial</a>
+          <a href="#" class="btn btn-secondary">Watch Demo</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="heroimg.png" alt="Data Analytics Illustration" />
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="features-header">
+      <h2>Why Choose Data Flow?</h2>
+      <p>Everything you need to turn your data into your competitive advantage</p>
+    </div>
+    <div class="features-list">
+      <div class="feature-item">
+        <img src="feature1.png" alt="Real-Time Analytics" />
+        <h3>Real-Time Analytics</h3>
+        <p>Get insights as they happen with our real-time data processing.</p>
+      </div>
+      <div class="feature-item">
+        <img src="feature2.png" alt="Custom Dashboards" />
+        <h3>Custom Dashboards</h3>
+        <p>Create personalized dashboards to visualize your data the way you want.</p>
+      </div>
+      <div class="feature-item">
+        <img src="feature3.png" alt="Advanced Security" />
+        <h3>Advanced Security</h3>
+        <p>Keep your data safe with our top-notch security features.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-proof">
+    <h2>Trusted by 10,000+ Companies</h2>
+    <p>From startups to Fortune 500 companies</p>
+    <div class="logos">
+      <img src="https://logo.clearbit.com/google.com" alt="Google" title="Google" />
+      <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" title="Microsoft" />
+      <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" title="Amazon" />
+      <img src="https://logo.clearbit.com/netflix.com" alt="Netflix" title="Netflix" />
+      <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb" title="Airbnb" />
+      <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" title="Stripe" />
+    </div>
+    <div class="testimonials">
+      <div class="testimonial-item">
+        <p>"Data Flow has transformed the way we analyze our data. Highly recommend!"</p>
+        <h4>John Doe, CEO of Tech Innovations</h4>
+      </div>
+      <div class="testimonial-item">
+        <p>"The real-time analytics feature is a game changer for our business."</p>
+        <h4>Jane Smith, CMO of Market Leaders</h4>
+      </div>
+    </div>
+  </section>
+  <section class="newsletter-section">
+    <div class="newsletter-container">
+      <h2>Stay Updated!</h2>
+      <p>Subscribe to our newsletter for the latest updates, tips, and exclusive offers.</p>
+      <form class="newsletter-form" aria-label="Newsletter Signup" method="post" action="#">
+        <div class="form-group">
+          <label for="newsletter-name">Name</label>
+          <input type="text" id="newsletter-name" name="name" placeholder="Your Name" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="newsletter-email">Email Address</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="newsletter-terms" name="terms" required />
+          <label for="newsletter-terms">I agree to receive emails from DataFlow</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="#" class="footer-link">Features</a>
+        <a href="#" class="footer-link">Pricing</a>
+        <a href="#" class="footer-link">Integration</a>
+        <a href="#" class="footer-link">API</a>
+      </div>
+      <div class="footer-section">
+        <h4>Company</h4>
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Blog</a>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <a href="#" class="footer-link">Documentation</a>
+        <a href="#" class="footer-link">Help Center</a>
+        <a href="#" class="footer-link">Community</a>
+        <a href="#" class="footer-link">Status</a>
+      </div>
+    </div>
+    <p>&copy; 2024 Data Flow. All rights reserved.</p>
+  </footer>
+<script>
+  // Mobile toggle and navigation
+  const navtoggle = document.querySelector('.nav-toggle');
+  const navlinks = document.querySelector('.nav-links');
+  const navactions = document.querySelector('.nav-actions');
+  navtoggle.addEventListener('click', () =>  {
+      navlinks.classList.toggle('open');
+      navactions.classList.toggle('open');
+      navtoggle.classList.toggle('open');
+      // Accessibility toggle
+      const expanded = navtoggle.getAttribute('aria-expanded') === 'true';
+      navtoggle.setAttribute('aria-expanded', String(!expanded));
+  });
+  window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+          navlinks.classList.remove('open');
+          navactions.classList.remove('open');
+          navtoggle.classList.remove('open');
+      }
+  });
+
+  // Dropdown behavior
+  document.querySelectorAll('.dropdown').forEach(drop => {
+    const btn = drop.querySelector('.drop-btn');
+    const menu = drop.querySelector('.dropdown-menu');
+
+    const close = () => {
+      drop.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    };
+    const open = () => {
+      drop.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    };
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (drop.classList.contains('open')) close();
+      else {
+        // close others
+        document.querySelectorAll('.dropdown.open').forEach(d => {
+          d.classList.remove('open');
+          d.querySelector('.drop-btn').setAttribute('aria-expanded', 'false');
+        });
+        open();
+      }
+    });
+
+    // close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!drop.contains(e.target)) close();
+    });
+
+    // keyboard: Esc to close, Arrow navigation basic
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        close();
+        btn.focus();
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        open();
+        const firstLink = menu.querySelector('a');
+        firstLink && firstLink.focus();
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          close();
+          btn.focus();
+        }
+      });
+    });
+  });
+
+  // optional: close dropdowns on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('.dropdown.open').forEach(d => {
+      d.classList.remove('open');
+      d.querySelector('.drop-btn').setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
